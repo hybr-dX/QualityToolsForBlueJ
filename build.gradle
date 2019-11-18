@@ -10,6 +10,7 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     id 'jacoco'
+    id 'checkstyle'
 }
 
 repositories {
@@ -47,6 +48,13 @@ jacoco {
     toolVersion = "0.8.5"
     reportsDir = file("${buildDir}/reports/jacoco")
 }
+// Configures CheckStyle version and where reports are stored
+checkstyleMain {
+    source ='src/main/java'
+}
+checkstyleTest {
+    source ='src/test/java'
+}
 
 jacocoTestReport {
     // Generates html report in build directory
@@ -56,3 +64,5 @@ jacocoTestReport {
         html.destination file("${buildDir}/reports/jacoco")
     }
 }
+
+
